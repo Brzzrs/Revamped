@@ -1,41 +1,58 @@
 <html>
+
 <head>
-<script src="../WebResources/Libs/React/react.min.js"></script>
-<script src="../WebResources/Libs/Materialize/js/materialize.min.js"></script>
-<link rel="stylesheet" href="../WebResources/Libs/Materialize/css/materialize.min.css">
+  <script src="../WebResources/Libs/React/react.js"></script>
+  <script src="../WebResources/Libs/React/react-dom.js"></script>
+  <script src="../WebResources/Libs/React/react-dom-server.js"></script>
+  <script src="../WebResources/Libs/Materialize/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="../WebResources/Libs/Materialize/css/materialize.min.css">
+  <link rel="stylesheet" href="./style.css">
+
+  <script type="text/javascript">
+    setInterval(function () {
+      const time = new Date().toLocaleTimeString();
+      ReactDOM.render(
+        time,
+        document.getElementById("timeid")
+      );
+    }, 1000);
+  </script>
+
 </head>
 
-<body>
+<body class="white">
 
-  <div id="navbardivid" class="navbardiv">
+  <div id="navbar">
     <nav>
       <div class="nav-wrapper purple darken-2">
-        <a href="#" class="brand-logo center">iTeam</a>
-        <ul id="nav-ul" class="right hide-on-med-and-down">
-        </ul>
+        <a href="#" class="brand-logo center"><img id="iTeamLogo" src="../WebResources/Images/iTeamLogo.png"></a>
+        <div id="navsections">
+          <div id="dateid" class="left hide-on-med-and-down"></div>
+          <div id="timeid" class="right hide-on-med-and-down"></div>
+        </div>
       </div>
     </nav>
   </div>
 
-  <div id="infodivid"class="infodiv">
+  <div id="tasks">
     <center>
       <br>
       <div class="container">
         <div class="row">
           <div class="col s12 card-panel purple darken-2 white-text">
-            <center><h4>OEM & Marketing/Sales</h4></center>
+            <h4>OEM & Marketing/Sales</h4>
             <h5>Task Here</h5>
           </div>
           <div class="col s12 card-panel purple darken-2 white-text">
-            <center><h4>Tech Support</h4></center>
+            <h4>Tech Support</h4>
             <h5>Task Here</h5>
           </div>
           <div class="col s12 card-panel purple darken-2 white-text">
-            <center><h4>Web/Programming</h4></center>
+            <h4>Web/Programming</h4>
             <h5>Task Here</h5>
           </div>
           <div class="col s12 card-panel purple darken-2 white-text">
-            <center><h4>Everyone</h4></center>
+            <h4>Everyone</h4>
             <h5>Task Here</h5>
           </div>
         </div>
