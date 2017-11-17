@@ -9,23 +9,24 @@
   <link rel="stylesheet" href="./style.css">
 
   <script type="text/jsx">
-    setInterval(function() {
-      //RENDER AND UPDATE TIME!
-      ReactDOM.render(
-        <h4>{
-          new Date().toLocaleTimeString().replace(/:\d+ /, ' ')
-        }</h4>,
-        document.getElementById("timeid")
-      );
+  //DATE AND TIME JSX MAGIC!!11!!11!1!!111!
+  setInterval(function() {
+    //RENDER AND UPDATE TIME!
+    ReactDOM.render(
+      <h4>{
+        new Date().toLocaleTimeString().replace(/:\d+ /, ' ')
+      }</h4>,
+      document.getElementById("timeid")
+    );
 
-      //RENDER AND UPDATE DATE!
-      ReactDOM.render(
-        <h4>{
-          String((new Date().getMonth() + 1) + '-' + new Date().getDate() + '-' + new Date().getFullYear())
-        }</h4>,
-        document.getElementById("dateid")
-      );
-    }, 1000);
+    //RENDER AND UPDATE DATE!
+    ReactDOM.render(
+      <h4>{
+        String((new Date().getMonth() + 1) + '-' + new Date().getDate() + '-' + new Date().getFullYear())
+      }</h4>,
+      document.getElementById("dateid")
+    );
+  }, 1000);
   </script>
 
 </head>
