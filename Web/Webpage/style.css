@@ -3,3 +3,10 @@
   height: 55px;
   width: auto;
 }
+
+#timeid {
+  padding-right: 10px;
+}
+#dateid {
+  padding-left: 10px;
+}

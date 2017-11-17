@@ -3,17 +3,27 @@
 <head>
   <script src="../WebResources/Libs/React/react.js"></script>
   <script src="../WebResources/Libs/React/react-dom.js"></script>
-  <script src="../WebResources/Libs/React/react-dom-server.js"></script>
   <script src="../WebResources/Libs/Materialize/js/materialize.min.js"></script>
+  <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
   <link rel="stylesheet" href="../WebResources/Libs/Materialize/css/materialize.min.css">
   <link rel="stylesheet" href="./style.css">
 
-  <script type="text/javascript">
-    setInterval(function () {
-      const time = new Date().toLocaleTimeString();
+  <script type="text/jsx">
+    setInterval(function() {
+      //RENDER AND UPDATE TIME!
       ReactDOM.render(
-        time,
+        <h4>{
+          new Date().toLocaleTimeString().replace(/:\d+ /, ' ')
+        }</h4>,
         document.getElementById("timeid")
+      );
+
+      //RENDER AND UPDATE DATE!
+      ReactDOM.render(
+        <h4>{
+          String((new Date().getMonth() + 1) + '-' + new Date().getDate() + '-' + new Date().getFullYear())
+        }</h4>,
+        document.getElementById("dateid")
       );
     }, 1000);
   </script>
@@ -27,8 +37,8 @@
       <div class="nav-wrapper purple darken-2">
         <a href="#" class="brand-logo center"><img id="iTeamLogo" src="../WebResources/Images/iTeamLogo.png"></a>
         <div id="navsections">
-          <div id="dateid" class="left hide-on-med-and-down"></div>
-          <div id="timeid" class="right hide-on-med-and-down"></div>
+          <div id="dateid" class="left"></div>
+          <div id="timeid" class="right"></div>
         </div>
       </div>
     </nav>
