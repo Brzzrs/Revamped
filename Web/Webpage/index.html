@@ -1,32 +1,17 @@
 <html>
 
 <head>
+  <title>ITEAM</title>
   <script src="../WebResources/Libs/React/react.js"></script>
   <script src="../WebResources/Libs/React/react-dom.js"></script>
-  <script src="../WebResources/Libs/Materialize/js/materialize.min.js"></script>
+  <script src="./Utilities.js"></script>
   <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
   <link rel="stylesheet" href="../WebResources/Libs/Materialize/css/materialize.min.css">
   <link rel="stylesheet" href="./style.css">
 
   <script type="text/jsx">
-  //DATE AND TIME JSX MAGIC!!11!!11!1!!111!
-  setInterval(function() {
-    //RENDER AND UPDATE TIME!
-    ReactDOM.render(
-      <h4>{
-        new Date().toLocaleTimeString().replace(/:\d+ /, ' ')
-      }</h4>,
-      document.getElementById("timeid")
-    );
-
-    //RENDER AND UPDATE DATE!
-    ReactDOM.render(
-      <h4>{
-        String((new Date().getMonth() + 1) + '-' + new Date().getDate() + '-' + new Date().getFullYear())
-      }</h4>,
-      document.getElementById("dateid")
-    );
-  }, 1000);
+    new CoreUtilities("date").getFormattedData();
+    new CoreUtilities("time").getFormattedData();
   </script>
 
 </head>
@@ -38,8 +23,8 @@
       <div class="nav-wrapper purple darken-2">
         <a href="#" class="brand-logo center"><img id="iTeamLogo" src="../WebResources/Images/iTeamLogo.png"></a>
         <div id="navsections">
-          <div id="dateid" class="left"></div>
-          <div id="timeid" class="right"></div>
+          <div id="datediv" class="left"><h4 id="dateid"></h4></div>
+          <div id="timediv" class="right"><h4 id="timeid"></h4></div>
         </div>
       </div>
     </nav>
