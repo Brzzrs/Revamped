@@ -30,7 +30,7 @@ class CoreUtilities {
   FormatOption(data, option) {
     if (option == "date") {
       setInterval(function() {
-        document.getElementById('dateid').innerHTML = String(data[(new Date().getMonth() + 1)] + " " + new Date().getDate() + ", " + new Date().getFullYear());
+        document.getElementById('dateid').innerHTML = String(data[(new Date().getMonth())] + " " + new Date().getDate() + ", " + new Date().getFullYear());
       }, 1000);
     }
     else {
