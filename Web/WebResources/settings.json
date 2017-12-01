@@ -1,0 +1,8 @@
+{
+  "tasks": {
+    "oemmarketing": "oem/marketing task goes here",
+    "techsupport": "tech support task goes here",
+    "webprogramming": "web/programming task goes here",
+    "everyone": "everyones task goes here"
+  }
+}

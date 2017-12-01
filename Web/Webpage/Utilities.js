@@ -30,13 +30,13 @@ class CoreUtilities {
   FormatOption(data, option) {
     if (option == "date") {
       setInterval(function() {
-        document.getElementById('dateid').innerHTML = String(data[(new Date().getMonth())] + " " + new Date().getDate() + ", " + new Date().getFullYear());
-      }, 1000);
+        document.getElementById("dateid").innerHTML = String(data[(new Date().getMonth())] + " " + new Date().getDate() + ", " + new Date().getFullYear());
+      }, 0);
     }
     else {
       setInterval(function() {
-        document.getElementById('timeid').innerHTML = new Date().toLocaleTimeString().replace(/:\d+ /, ' ')
-      }, 1000);
+        document.getElementById("timeid").innerHTML = new Date().toLocaleTimeString().replace(/:\d+ /, ' ')
+      }, 0);
     }
   }
 
