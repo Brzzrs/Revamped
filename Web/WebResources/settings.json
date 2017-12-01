@@ -1,8 +1,20 @@
 {
   "tasks": {
-    "oemmarketing": "oem/marketing task goes here",
-    "techsupport": "tech support task goes here",
-    "webprogramming": "web/programming task goes here",
-    "everyone": "everyones task goes here"
+    "oemmarketing": {
+      "task": "OEM/Marketing task goes here",
+      "due": "N/A"
+    },
+    "techsupport": {
+      "task": "Tech Support task goes here",
+      "due": "N/A"
+    },
+    "webprogramming": {
+      "task": "Web/Programming task goes here",
+      "due": "N/A"
+    },
+    "everyone": {
+      "task": "Everyones task goes here",
+      "due": "N/A"
+    }
   }
 }
