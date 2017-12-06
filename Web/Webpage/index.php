@@ -1,8 +1,11 @@
 <?php
+include("../WebResources/ChromePhp.php");
 class JSONgetter {
   var $JSON;
 
-  public function GetData($option, $data) {
+  public function GetData($data) {
+    $option = filter_input(INPUT_COOKIE, "team");
+    ChromePhp::log("[PHP] Grabbed Cookie Data: '" . $option . "'");
     $this->JSON = json_decode(file_get_contents("../WebResources/settings.json"));
     if ($option === "oemmarketing") {
       if ($data === "task") {
@@ -36,6 +39,7 @@ class JSONgetter {
         echo (string)$this->JSON->tasks->everyone->due;
       }
     }
+    setcookie("team", "", time() - 60 * 60 * 24 * 30);
   }
 
 }
@@ -51,12 +55,29 @@ class JSONgetter {
   <script src="../WebResources/Libs/React/react-dom.js"></script>
   <script src="./Utilities.js"></script>
   <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
   <link rel="stylesheet" href="../WebResources/Libs/Materialize/css/materialize.min.css">
   <link rel="stylesheet" href="./style.css">
 
-  <script type="text/jsx">
-    new CoreUtilities("date").getFormattedData();
-    new CoreUtilities("time").getFormattedData();
+  <script type="text/javascript">
+    //TimeDate Parameters for constructor = option
+    //TaskDue Parameters for constructor = dueid, taskid, json
+    new TimeDate("date").getFormattedData();
+    new TimeDate("time").getFormattedData();
+
+    function CreateCookie(name, value, days) {
+      var expires;
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toGMTString();
+      document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+    }
+
+    function GetDue(dueid, team) {
+      CreateCookie("team", team, 1);
+      const json = '<?php $core = new JSONgetter(); $core->GetData("due"); ?>';
+      new TaskDue(dueid, null, json).GetDue();
+    }
   </script>
 
 </head>
@@ -93,9 +114,7 @@ class JSONgetter {
               </h5>
               <h5 id="oemdue">
                 <script type="text/javascript">
-                setInterval(function () {
-                  document.getElementById("oemdue").innerHTML = 'Due: <?php $core = new JSONgetter(); $core->GetData("everyone", "due"); ?>';
-                }, 0);
+                GetDue("oemdue", "oemmarketing");
                 </script>
               </h5>
             </div>
@@ -108,10 +127,13 @@ class JSONgetter {
                 }, 0);
                 </script>
               </h5>
-              <h5 id="techdue">Due:
+              <h5 id="techdue">
                 <script type="text/javascript">
                 setInterval(function () {
-                  document.getElementById("techdue").innerHTML = 'Due: <?php $core = new JSONgetter(); $core->GetData("everyone", "due"); ?>';
+                  const due = '<?php $core = new JSONgetter(); $core->GetData("techsupport", "due"); ?>';
+                  if (due != "N/A") {
+                    document.getElementById("techdue").innerHTML = 'Due: ' + due;
+                  }
                 }, 0);
                 </script>
               </h5>
@@ -125,10 +147,13 @@ class JSONgetter {
                 }, 0);
                 </script>
               </h5>
-              <h5 id="webdue">Due:
+              <h5 id="webdue">
                 <script type="text/javascript">
                 setInterval(function () {
-                  document.getElementById("webdue").innerHTML = 'Due: <?php $core = new JSONgetter(); $core->GetData("everyone", "due"); ?>';
+                  const due = '<?php $core = new JSONgetter(); $core->GetData("webprogramming", "due"); ?>';
+                  if (due != "N/A") {
+                    document.getElementById("webdue").innerHTML = 'Due: ' + due;
+                  }
                 }, 0);
                 </script>
               </h5>
@@ -142,10 +167,13 @@ class JSONgetter {
                 }, 0);
                 </script>
               </h5>
-              <h5 id="everydue">Due:
+              <h5 id="everydue">
                 <script type="text/javascript">
                 setInterval(function () {
-                  document.getElementById("everydue").innerHTML = 'Due: <?php $core = new JSONgetter(); $core->GetData("everyone", "due"); ?>';
+                  const due = '<?php $core = new JSONgetter(); $core->GetData("everyone", "due"); ?>';
+                  if (due != "N/A") {
+                    document.getElementById("everydue").innerHTML = 'Due: ' + due;
+                  }
                 }, 0);
                 </script>
               </h5>
