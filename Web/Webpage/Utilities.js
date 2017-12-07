@@ -1,18 +1,6 @@
-function loadJSON(callback) {
+var debug = new Boolean(false);
 
-    var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-    xobj.open('GET', '../WebResources/settings.json', true); // Replace 'my_data' with the path to your file
-    xobj.onreadystatechange = function () {
-          if (xobj.readyState == 4 && xobj.status == "200") {
-            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-            callback(xobj.responseText);
-          }
-    };
-    xobj.send(null);
- }
-
-class JSONgetter{
+class JSONgetter {
 
   constructor(team, data) {
     this.team = team;
@@ -20,13 +8,67 @@ class JSONgetter{
     this.json = null;
   }
 
+  loadJSON(callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', '../WebResources/settings.json', false);
+    xobj.setRequestHeader("Cache-Control", "no-cache");
+    xobj.setRequestHeader("Pragma", "no-cache");
+    xobj.setRequestHeader("If-Modified-Since", "Sat, 1 Jan 2000 00:00:00 GMT");
+    xobj.onreadystatechange = function() {
+      if (xobj.readyState == 4 && xobj.status == "200") {
+        callback(xobj.responseText);
+      }
+    };
+    xobj.send(null);
+  }
+
   GetJSON() {
-    loadJSON(function(response) {
-      this.json = JSON.parse(response);
+    var json;
+    this.loadJSON(function(response) {
+      json = JSON.parse(response);
     });
+
+    if (debug == true) {
+      console.log(json);
+    }
+    if (this.team == "oemmarketing") {
+      if (this.data == "task") {
+        return json.teams.oemmarketing.task;
+      }
+      if (this.data == "due") {
+        return json.teams.oemmarketing.due;
+      }
+    }
+    if (this.team == "techsupport") {
+      if (this.data == "task") {
+        return json.teams.techsupport.task;
+      }
+      if (this.data == "due") {
+        return json.teams.techsupport.due;
+      }
+    }
+    if (this.team == "webprogramming") {
+      if (this.data == "task") {
+        return json.teams.webprogramming.task;
+      }
+      if (this.data == "due") {
+        return json.teams.webprogramming.due;
+      }
+    }
+    if (this.team == "everyone") {
+      if (this.data == "task") {
+        return json.teams.everyone.task;
+      }
+      if (this.data == "due") {
+        return json.teams.everyone.due;
+      }
+    }
   }
 
 }
+
+
 
 
 class TimeDate {
@@ -51,8 +93,7 @@ class TimeDate {
         "November",
         "December"
       ], this.option);
-    }
-    else {
+    } else {
       return this.FormatOption("NULL", this.option);
     }
   }
@@ -62,8 +103,7 @@ class TimeDate {
       setInterval(function() {
         document.getElementById("dateid").innerHTML = String(data[(new Date().getMonth())] + " " + new Date().getDate() + ", " + new Date().getFullYear());
       }, 0);
-    }
-    else {
+    } else {
       setInterval(function() {
         document.getElementById("timeid").innerHTML = new Date().toLocaleTimeString().replace(/:\d+ /, ' ')
       }, 0);
@@ -72,34 +112,43 @@ class TimeDate {
 
 }
 
+
+
+
 class TaskDue {
 
-  constructor(dueid, taskid, json) {
-    this.dueid = dueid;
-    this.taskid = taskid;
-    this.json = json;
+  constructor(team, option, id) {
+    this.team = team;
+    this.option = option;
+    this.id = id;
   }
 
   GetTask() {
-    console.log("taskid: " + this.taskid);
-    console.log("json: " + this.json);
-    const taskid = this.dueid;
-    const json = this.json;
-    setInterval(function () {
-      if (json != "N/A") {
-        document.getElementById(taskid).innerHTML = json;
+    var getter = new JSONgetter(this.team, this.option);
+    const id = this.id;
+    setInterval(function() {
+      var json = getter.GetJSON();
+      if (debug == true) {
+        console.log("taskid: " + id);
+        console.log("json: " + json);
       }
+      document.getElementById(id).innerHTML = json;
     }, 0);
   }
 
   GetDue() {
-    console.log("dueid: " + this.dueid);
-    console.log("json: " + this.json);
-    const dueid = this.dueid;
-    const json = this.json;
-    setInterval(function () {
+    var getter = new JSONgetter(this.team, this.option);
+    const id = this.id;
+    setInterval(function() {
+      var json = getter.GetJSON();
+      if (debug == true) {
+        console.log("dueid: " + id);
+        console.log("json: " + json);
+      }
       if (json != "N/A") {
-        document.getElementById(dueid).innerHTML = 'Due: ' + json;
+        document.getElementById(id).innerHTML = 'Due: ' + json;
+      } else {
+        document.getElementById(id).innerHTML = '';
       }
     }, 0);
   }

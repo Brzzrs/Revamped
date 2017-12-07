@@ -1,0 +1,80 @@
+<html>
+
+<head>
+  <title>ITEAM</title>
+  <script src="../WebResources/Libs/React/react.js"></script>
+  <script src="../WebResources/Libs/React/react-dom.js"></script>
+  <script src="./Utilities.js"></script>
+  <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <link rel="stylesheet" href="../WebResources/Libs/Materialize/css/materialize.min.css">
+  <link rel="stylesheet" href="./style.css">
+
+  <script type="text/javascript">
+    //TimeDate Parameters for constructor = option
+    new TimeDate("date").getFormattedData();
+    new TimeDate("time").getFormattedData();
+    //Get Tasks & output them || team, task/due, divid
+    new TaskDue("oemmarketing", "task", "oemmarkid").GetTask();
+    new TaskDue("techsupport", "task", "techid").GetTask();
+    new TaskDue("webprogramming", "task", "webproid").GetTask();
+    new TaskDue("everyone", "task", "everyid").GetTask();
+    //Get Due dates & output them || team, task/due, divid
+    new TaskDue("oemmarketing", "due", "oemdue").GetDue();
+    new TaskDue("techsupport", "due", "techdue").GetDue();
+    new TaskDue("webprogramming", "due", "webdue").GetDue();
+    new TaskDue("everyone", "due", "everydue").GetDue();
+  </script>
+
+</head>
+
+<body class="white">
+
+  <div id="navbar">
+    <nav>
+      <div class="nav-wrapper blue darken-3">
+        <a href="#" class="brand-logo center"><img id="iTeamLogo" src="../WebResources/Images/iTeamLogoWhite.png"></a>
+        <div id="navsections">
+          <div id="datediv" class="left"><h4 id="dateid"></h4></div>
+          <div id="timediv" class="right"><h4 id="timeid"></h4></div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div id="tasks">
+    <center>
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="col s12 card-panel blue darken-3 white-text">
+            <h3>Tasks</h3>
+            <div class="col s12 card-panel blue accent-4 white-text">
+              <h4>OEM & Marketing/Sales</h4>
+              <h5 id="oemmarkid"></h5>
+              <h5 id="oemdue"></h5>
+            </div>
+            <div class="col s12 card-panel blue accent-4 white-text">
+              <h4>Tech Support</h4>
+              <h5 id="techid"></h5>
+              <h5 id="techdue"></h5>
+            </div>
+            <div class="col s12 card-panel blue accent-4 white-text">
+              <h4>Web/Programming</h4>
+              <h5 id="webproid"></h5>
+              <h5 id="webdue"></h5>
+            </div>
+            <div class="col s12 card-panel blue accent-4 white-text">
+              <h4>Everyone</h4>
+              <h5 id="everyid"></h5>
+              <h5 id="everydue"></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </center>
+  </div>
+
+</body>
+
+</html>

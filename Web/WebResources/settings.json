@@ -1,5 +1,5 @@
 {
-  "tasks": {
+  "teams": {
     "oemmarketing": {
       "task": "OEM/Marketing task goes here",
       "due": "Today"
