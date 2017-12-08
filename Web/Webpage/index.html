@@ -2,6 +2,7 @@
 
 <head>
   <title>ITEAM</title>
+  <link rel="shortcut icon" href="../WebResources/Images/iTeamLogoBlueICON.ico" />
   <script src="../WebResources/Libs/React/react.js"></script>
   <script src="../WebResources/Libs/React/react-dom.js"></script>
   <script src="./Utilities.js"></script>
@@ -11,19 +12,23 @@
   <link rel="stylesheet" href="./style.css">
 
   <script type="text/javascript">
+    //////////////////////////////////STARTUP FUCTIONS//////////////////////////////////
     //TimeDate Parameters for constructor = option
     new TimeDate("date").getFormattedData();
     new TimeDate("time").getFormattedData();
     //Get Tasks & output them || team, task/due, divid
-    new TaskDue("oemmarketing", "task", "oemmarkid").GetTask();
-    new TaskDue("techsupport", "task", "techid").GetTask();
-    new TaskDue("webprogramming", "task", "webproid").GetTask();
-    new TaskDue("everyone", "task", "everyid").GetTask();
+    new TaskDueMOTD("oemmarketing", "task", "oemmarkid").GetTask();
+    new TaskDueMOTD("techsupport", "task", "techid").GetTask();
+    new TaskDueMOTD("webprogramming", "task", "webproid").GetTask();
+    new TaskDueMOTD("everyone", "task", "everyid").GetTask();
     //Get Due dates & output them || team, task/due, divid
-    new TaskDue("oemmarketing", "due", "oemdue").GetDue();
-    new TaskDue("techsupport", "due", "techdue").GetDue();
-    new TaskDue("webprogramming", "due", "webdue").GetDue();
-    new TaskDue("everyone", "due", "everydue").GetDue();
+    new TaskDueMOTD("oemmarketing", "due", "oemdue").GetDue();
+    new TaskDueMOTD("techsupport", "due", "techdue").GetDue();
+    new TaskDueMOTD("webprogramming", "due", "webdue").GetDue();
+    new TaskDueMOTD("everyone", "due", "everydue").GetDue();
+    //Get motd & output it || null, option, divid
+    new TaskDueMOTD(null, "motd", "motdid").GetMOTD();
+    //////////////////////////////////STARTUP FUCTIONS//////////////////////////////////
   </script>
 
 </head>
@@ -32,7 +37,7 @@
 
   <div id="navbar">
     <nav>
-      <div class="nav-wrapper blue darken-3">
+      <div class="nav-wrapper z-depth-4 blue darken-3">
         <a href="#" class="brand-logo center"><img id="iTeamLogo" src="../WebResources/Images/iTeamLogoWhite.png"></a>
         <div id="navsections">
           <div id="datediv" class="left"><h4 id="dateid"></h4></div>
@@ -42,12 +47,13 @@
     </nav>
   </div>
 
-  <div id="tasks">
+  <div id="DataContainer">
     <center>
       <br>
       <div class="container">
         <div class="row">
-          <div class="col s12 card-panel blue darken-3 white-text">
+          <div id="motdid"></div>
+          <div class="col s12 card-panel z-depth-4 blue darken-3 white-text">
             <h3>Tasks</h3>
             <div class="col s12 card-panel blue accent-4 white-text">
               <h4>OEM & Marketing/Sales</h4>

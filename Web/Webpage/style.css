@@ -1,12 +1,17 @@
 #iTeamLogo {
-  padding-top: 7px;
-  height: 55px;
+  padding-top: 0px;
+  height: 70px;
   width: auto;
 }
 
-#timeid {
+#timeid, #dateid {
+  padding-top: 4px;
   padding-right: 10px;
-}
-#dateid {
   padding-left: 10px;
+}
+
+
+nav {
+    height: 70px;
+    line-height: 30px;
 }

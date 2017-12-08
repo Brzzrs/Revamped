@@ -1,4 +1,5 @@
 {
+  "motd" : "Daily Message???",
   "teams": {
     "oemmarketing": {
       "task": "OEM/Marketing task goes here",

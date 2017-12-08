@@ -32,6 +32,9 @@ class JSONgetter {
     if (debug == true) {
       console.log(json);
     }
+    if (this.data == "motd") {
+        return json.motd;
+    }
     if (this.team == "oemmarketing") {
       if (this.data == "task") {
         return json.teams.oemmarketing.task;
@@ -115,7 +118,7 @@ class TimeDate {
 
 
 
-class TaskDue {
+class TaskDueMOTD {
 
   constructor(team, option, id) {
     this.team = team;
@@ -147,6 +150,25 @@ class TaskDue {
       }
       if (json != "N/A") {
         document.getElementById(id).innerHTML = 'Due: ' + json;
+      } else {
+        document.getElementById(id).innerHTML = '';
+      }
+    }, 0);
+  }
+  GetMOTD() {
+    var getter = new JSONgetter(null, this.option);
+    const id = this.id;
+    setInterval(function() {
+      var json = getter.GetJSON();
+      if (debug == true) {
+        console.log("divid: " + id);
+        console.log("json: " + json);
+      }
+      if (json != "N/A") {
+        document.getElementById(id).innerHTML =
+          '<div class="col s12 card-panel  z-depth-4 blue darken-3 white-text"> \
+            <h3>' + json + '</h3> \
+          </div>';
       } else {
         document.getElementById(id).innerHTML = '';
       }
