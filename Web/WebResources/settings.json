@@ -1,5 +1,7 @@
 {
   "motd" : "Daily Message???",
+  "notes1" : "extra notes 1",
+  "notes2" : "extra notes 2",
   "teams": {
     "oemmarketing": {
       "task": "OEM/Marketing task goes here",

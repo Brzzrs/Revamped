@@ -33,7 +33,13 @@ class JSONgetter {
       console.log(json);
     }
     if (this.data == "motd") {
-        return json.motd;
+      return json.motd;
+    }
+    if (this.data == "notes1") {
+      return json.notes1;
+    }
+    if (this.data == "notes2") {
+      return json.notes2;
     }
     if (this.team == "oemmarketing") {
       if (this.data == "task") {
@@ -118,7 +124,7 @@ class TimeDate {
 
 
 
-class TaskDueMOTD {
+class TaskDueMOTDNotes {
 
   constructor(team, option, id) {
     this.team = team;
@@ -156,21 +162,64 @@ class TaskDueMOTD {
     }, 0);
   }
   GetMOTD() {
-    var getter = new JSONgetter(null, this.option);
+    var getter1 = new JSONgetter(null, this.option);
+    var getter2 = new JSONgetter(null, "notes2");
     const id = this.id;
     setInterval(function() {
-      var json = getter.GetJSON();
+      var json = getter1.GetJSON();
       if (debug == true) {
         console.log("divid: " + id);
         console.log("json: " + json);
       }
       if (json != "N/A") {
         document.getElementById(id).innerHTML =
-          '<div class="col s12 card-panel  z-depth-4 blue darken-3 white-text"> \
+          '<div class="col s12 card-panel z-depth-4 blue darken-3 white-text"> \
             <h3>' + json + '</h3> \
           </div>';
       } else {
         document.getElementById(id).innerHTML = '';
+      }
+    }, 0);
+  }
+
+  GetNotes() {
+    var getter = new JSONgetter(null, this.option);
+    var getter2 = new JSONgetter(null, "notes2");
+    const id = this.id;
+    const option = this.option;
+    setInterval(function() {
+      var json = getter.GetJSON();
+      if (debug == true) {
+        console.log("divid: " + id);
+        console.log("json: " + json);
+      }
+      if (option == "notes1") {
+        if (json != "N/A") {
+          var lol1 = getter2.GetJSON();
+          if (lol1 == "N/A") {
+            document.getElementById(id).innerHTML =
+              '<div class="col s12 card-panel z-depth-4 blue darken-3 white-text"> \
+                <h5>' + json + '</h5> \
+              </div>';
+          } else {
+            document.getElementById(id).innerHTML =
+              '<div class="col s5 card-panel z-depth-4 blue darken-3 white-text"> \
+                <h5>' + json + '</h5> \
+              </div>';
+          }
+        } else {
+          document.getElementById(id).innerHTML = '';
+        }
+      }
+      if (option == "notes2") {
+        if (json != "N/A") {
+          document.getElementById(id).innerHTML =
+            '<div class="col s5 push-s2 card-panel z-depth-4 blue darken-3 white-text"> \
+              <h5>' + json + '</h5> \
+            </div>';
+        } else {
+          document.getElementById(id).innerHTML = '';
+        }
       }
     }, 0);
   }

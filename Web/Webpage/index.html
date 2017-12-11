@@ -17,17 +17,20 @@
     new TimeDate("date").getFormattedData();
     new TimeDate("time").getFormattedData();
     //Get Tasks & output them || team, task/due, divid
-    new TaskDueMOTD("oemmarketing", "task", "oemmarkid").GetTask();
-    new TaskDueMOTD("techsupport", "task", "techid").GetTask();
-    new TaskDueMOTD("webprogramming", "task", "webproid").GetTask();
-    new TaskDueMOTD("everyone", "task", "everyid").GetTask();
+    new TaskDueMOTDNotes("oemmarketing", "task", "oemmarkid").GetTask();
+    new TaskDueMOTDNotes("techsupport", "task", "techid").GetTask();
+    new TaskDueMOTDNotes("webprogramming", "task", "webproid").GetTask();
+    new TaskDueMOTDNotes("everyone", "task", "everyid").GetTask();
     //Get Due dates & output them || team, task/due, divid
-    new TaskDueMOTD("oemmarketing", "due", "oemdue").GetDue();
-    new TaskDueMOTD("techsupport", "due", "techdue").GetDue();
-    new TaskDueMOTD("webprogramming", "due", "webdue").GetDue();
-    new TaskDueMOTD("everyone", "due", "everydue").GetDue();
+    new TaskDueMOTDNotes("oemmarketing", "due", "oemdue").GetDue();
+    new TaskDueMOTDNotes("techsupport", "due", "techdue").GetDue();
+    new TaskDueMOTDNotes("webprogramming", "due", "webdue").GetDue();
+    new TaskDueMOTDNotes("everyone", "due", "everydue").GetDue();
     //Get motd & output it || null, option, divid
-    new TaskDueMOTD(null, "motd", "motdid").GetMOTD();
+    new TaskDueMOTDNotes(null, "motd", "motdid").GetMOTD();
+    //Get notes &output them || null, option, divid
+    new TaskDueMOTDNotes(null, "notes1", "notes1id").GetNotes();
+    new TaskDueMOTDNotes(null, "notes2", "notes2id").GetNotes();
     //////////////////////////////////STARTUP FUCTIONS//////////////////////////////////
   </script>
 
@@ -76,6 +79,8 @@
               <h5 id="everydue"></h5>
             </div>
           </div>
+          <div id="notes1id"></div>
+          <div id="notes2id"></div>
         </div>
       </div>
     </center>
