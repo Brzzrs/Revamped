@@ -198,13 +198,17 @@ class TaskDueMOTDNotes {
           var lol1 = getter2.GetJSON();
           if (lol1 == "N/A") {
             document.getElementById(id).innerHTML =
-              '<div class="col s12 card-panel z-depth-4 blue darken-3 white-text"> \
-                <h5>' + json + '</h5> \
+              '<div class="col s12"> \
+                <div class="card-panel z-depth-4 blue darken-3 white-text" style="min-height: 50px;"> \
+                  <h5>' + json + '</h5> \
+                </div> \
               </div>';
           } else {
             document.getElementById(id).innerHTML =
-              '<div class="col s5 card-panel z-depth-4 blue darken-3 white-text"> \
-                <h5>' + json + '</h5> \
+              '<div class="col s6"> \
+                <div class="card-panel z-depth-4 blue darken-3 white-text" style="min-height: 50px;"> \
+                  <h5>' + json + '</h5> \
+                </div> \
               </div>';
           }
         } else {
@@ -214,8 +218,10 @@ class TaskDueMOTDNotes {
       if (option == "notes2") {
         if (json != "N/A") {
           document.getElementById(id).innerHTML =
-            '<div class="col s5 push-s2 card-panel z-depth-4 blue darken-3 white-text"> \
-              <h5>' + json + '</h5> \
+            '<div class="col s6"> \
+              <div class="card-panel z-depth-4 blue darken-3 white-text" style="min-height: 50px;"> \
+                <h5>' + json + '</h5> \
+              </div> \
             </div>';
         } else {
           document.getElementById(id).innerHTML = '';
