@@ -15,10 +15,10 @@ nav {
     line-height: 30px;
 }
 
-/*.container, .col, .s12, .row {
+.container, .col, .s12, .row {
   height: auto;
   width: 97%;
-}*/
+}
 
 /*#DataContainer, .container, .row, .col {
   width: 95%;
