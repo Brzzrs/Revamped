@@ -17,9 +17,20 @@ nav {
 
 .container, .col, .s12, .row {
   height: auto;
-  width: 97%;
+  width: 98%;
 }
 
-/*#DataContainer, .container, .row, .col {
-  width: 95%;
-}*/
+.align {
+  display: inline-block;
+  width: 100%;
+}
+
+.floatright {
+  float: right;
+  margin-left: 15px;
+}
+
+.floatleft {
+  float: left;
+  margin-left: 15px;
+}
