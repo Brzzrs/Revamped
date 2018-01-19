@@ -18,7 +18,7 @@
     new TimeDate("time").getFormattedData();
     //Get Tasks & output them || team, task/due, divid
     new TaskDueMOTDNotes("oemmarketing", "task", "oemmarkid").GetTask();
-    new TaskDueMOTDNotes("techsupport", "task", "techid").GetTask();
+    /*new TaskDueMOTDNotes("techsupport", "task", "techid").GetTask();
     new TaskDueMOTDNotes("webprogramming", "task", "webproid").GetTask();
     new TaskDueMOTDNotes("everyone", "task", "everyid").GetTask();
     //Get Due dates & output them || team, task/due, divid
@@ -30,7 +30,7 @@
     new TaskDueMOTDNotes(null, "motd", "motdid").GetMOTD();
     //Get notes &output them || null, option, divid
     new TaskDueMOTDNotes(null, "notes1", "notes1id").GetNotes();
-    new TaskDueMOTDNotes(null, "notes2", "notes2id").GetNotes();
+    new TaskDueMOTDNotes(null, "notes2", "notes2id").GetNotes();*/
     //////////////////////////////////STARTUP FUCTIONS//////////////////////////////////
   </script>
 
@@ -65,8 +65,28 @@
                   <h4 class="floatright">Due</h4>
                 </div>
                 <hr>
-                <h5 id="oemmarkid"></h5>
-                <h5 id="oemdue"></h5>
+                <marquee direction="up" height="120px" scrolldelay="400" behavior="alternate">
+                  <div class="align">
+                    <h5 class="floatleft" id="oemmarkid1"></h5>
+                    <h5 class="floatright" id="oemdue1"></h5>
+                  </div>
+                  <div class="align">
+                    <h5 class="floatleft" id="oemmarkid2"></h5>
+                    <h5 class="floatright" id="oemdue2"></h5>
+                  </div>
+                  <div class="align">
+                    <h5 class="floatleft" id="oemmarkid3"></h5>
+                    <h5 class="floatright" id="oemdue3"></h5>
+                  </div>
+                  <div class="align">
+                    <h5 class="floatleft" id="oemmarkid4"></h5>
+                    <h5 class="floatright" id="oemdue4"></h5>
+                  </div>
+                  <div class="align">
+                    <h5 class="floatleft" id="oemmarkid5"></h5>
+                    <h5 class="floatright" id="oemdue5"></h5>
+                  </div>
+                </marquee>
               </div>
             </div>
             <div class="col s6">
@@ -76,8 +96,10 @@
                   <h4 class="floatright">Due</h4>
                 </div>
                 <hr>
-                <h5 id="techid"></h5>
-                <h5 id="techdue"></h5>
+                <div class="align">
+                  <h5 class="floatleft" id="techid"></h5>
+                  <h5 class="floatright" id="techdue"></h5>
+                </div>
               </div>
             </div>
             <div class="col s6">
@@ -87,8 +109,10 @@
                   <h4 class="floatright">Due</h4>
                 </div>
                 <hr>
-                <h5 id="webproid"></h5>
-                <h5 id="webdue"></h5>
+                <div class="align">
+                  <h5 class="floatleft" id="webproid"></h5>
+                  <h5 class="floatright" id="webdue"></h5>
+                </div>
               </div>
             </div>
             <div class="col s6">
@@ -98,8 +122,10 @@
                   <h4 class="floatright">Due</h4>
                 </div>
                 <hr>
-                <h5 id="everyid"></h5>
-                <h5 id="everydue"></h5>
+                <div class="align">
+                  <h5 class="floatleft" id="everyid"></h5>
+                  <h5 class="floatright" id="everydue"></h5>
+                </div>
               </div>
             </div>
           </div>

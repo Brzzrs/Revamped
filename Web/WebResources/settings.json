@@ -1,22 +1,28 @@
 {
-  "motd" : "Daily Message???",
-  "notes1" : "extra notes 1",
-  "notes2" : "extra notes 2",
+  "motd": "Daily Message???",
+  "notes1": "extra notes 1",
+  "notes2": "extra notes 2",
   "teams": {
     "oemmarketing": {
-      "task": "OEM/Marketing task goes here",
+      "tasks": {
+        "task1": "task1",
+        "task2": "sfds",
+        "task3": "sdfs",
+        "task4": "",
+        "task5": "eshkjdhkj"
+      },
       "due": "Today"
     },
     "techsupport": {
-      "task": "Tech Support task goes here",
+      "task1": "Tech Support task goes here",
       "due": "Today"
     },
     "webprogramming": {
-      "task": "Web/Programming task goes here",
+      "task1": "Web/Programming task goes here",
       "due": "Today"
     },
     "everyone": {
-      "task": "Everyones task goes here",
+      "task1": "Everyones task goes here",
       "due": "Today"
     }
   }

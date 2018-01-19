@@ -43,7 +43,7 @@ class JSONgetter {
     }
     if (this.team == "oemmarketing") {
       if (this.data == "task") {
-        return json.teams.oemmarketing.task;
+        return json.teams.oemmarketing.tasks;
       }
       if (this.data == "due") {
         return json.teams.oemmarketing.due;
@@ -135,13 +135,19 @@ class TaskDueMOTDNotes {
   GetTask() {
     var getter = new JSONgetter(this.team, this.option);
     const id = this.id;
+    var iterations = 0;
     setInterval(function() {
       var json = getter.GetJSON();
-      if (debug == true) {
-        console.log("taskid: " + id);
-        console.log("json: " + json);
+      for (var task in json) {
+        if (json[task].valueOf() != "") {
+          iterations++;
+          document.getElementById(id.concat(iterations.toString())).style.display = "inline-block";
+          document.getElementById(id.concat(iterations.toString())).innerHTML = json[task].valueOf();
+        } else if (json[task].valueOf() == null) {
+          document.getElementById(id.concat(iterations.toString())).style.display = "none";
+        }
       }
-      document.getElementById(id).innerHTML = json;
+      iterations = 0;
     }, 0);
   }
 
@@ -155,7 +161,7 @@ class TaskDueMOTDNotes {
         console.log("json: " + json);
       }
       if (json != "N/A") {
-        document.getElementById(id).innerHTML = 'Due: ' + json;
+        document.getElementById(id).innerHTML = json;
       } else {
         document.getElementById(id).innerHTML = '';
       }
